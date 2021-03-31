@@ -6,40 +6,40 @@ using System.IO;
 namespace GenesisColorCorrector {
     class Program {
         // Base palette index.
-        public static byte      BaseIndex       = 34;
+        public static byte      BaseIndex       = 32;
         public static bool      UseBaseIndex    = false;
-        public static byte[]    HardwareColors  = new byte[]{ 0, 52, 87, 116, 144, 172, 206, 255};
+        public static byte[]    HardwareColors  = new byte[]{ 0, 34, 68, 102, 136, 170, 204, 238};
 
         public static byte NearestColor(byte color) {
             // Darkest Shade (0)
-            if(color < 14)
+            if(color < 12)
                return 0;
 
-            // (34)
-            if(color < 50)
+            // (32)
+            if(color < 48)
                return UseBaseIndex ? BaseIndex : HardwareColors[1];
 
-            // (68)
-            if(color < 80)
+            // (64)
+            if(color < 76)
                return UseBaseIndex ? (byte)(BaseIndex * 2) : HardwareColors[2];
 
-            // (102)
-            if(color < 120)
+            // (96)
+            if(color < 114)
                return UseBaseIndex ? (byte)(BaseIndex * 3) : HardwareColors[3];
 
-            // (136)
-            if(color < 150)
+            // (128)
+            if(color < 142)
                return UseBaseIndex ? (byte)(BaseIndex * 4) : HardwareColors[4];
 
-            // (170)
-            if(color < 184)
+            // (160)
+            if(color < 174)
                return UseBaseIndex ? (byte)(BaseIndex * 5) : HardwareColors[5];
 
-            // (204)
-            if(color < 220)
+            // (192)
+            if(color < 208)
                return UseBaseIndex ? (byte)(BaseIndex * 6) : HardwareColors[6];
 
-            // Lightest shade (238)
+            // Lightest shade (224)
             return    UseBaseIndex ? (byte)(BaseIndex * 7) : HardwareColors[7];
         }
 
